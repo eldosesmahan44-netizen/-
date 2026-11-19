@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Дала Авто — көлік сатып алу</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--bg:#eef2f4;--surface:#fff;--ink:#12232e;--muted:#5b6b75;--teal:#0d4f4c;--teal2:#157a74;--sun:#f4b400;--line:#d5dde1;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c171d;--surface:#14252e;--ink:#eaf1f3;--muted:#93a6af;--teal:#2bb3a9;--teal2:#46d0c5;--line:#274049;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Unbounded,Manrope,sans-serif;margin:0;line-height:1.15}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:Unbounded,sans-serif;font-weight:700;font-size:18px}
+.logo i{display:inline-block;width:12px;height:12px;background:var(--sun);border-radius:50%;margin-right:8px}
+header a.tel{color:var(--ink);font-weight:800;text-decoration:none}
+.hero{padding:36px 0 56px;display:grid;gap:32px;grid-template-columns:1.1fr .9fr;align-items:center}
+.hero h1{font-size:clamp(30px,5.2vw,56px);font-weight:700;letter-spacing:-.02em}
+.hero p{color:var(--muted);max-width:46ch;font-size:18px;margin:18px 0 28px}
+.budget{background:var(--teal);color:#fff;border-radius:24px;padding:26px}
+.budget label{font-weight:600;opacity:.85}
+.budget .sum{font-family:Unbounded,sans-serif;font-size:clamp(26px,4vw,38px);margin:6px 0 14px}
+input[type=range]{width:100%;accent-color:var(--sun);height:32px}
+.budget .res{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{background:var(--sun);color:#1b1500;border:0;border-radius:14px;padding:13px 20px;font:800 15px Manrope,sans-serif;cursor:pointer}
+.btn:focus-visible,input:focus-visible,select:focus-visible,.chip:focus-visible,.card:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0 22px}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px;font:600 14px Manrope,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
+select,.search{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 12px;font:600 14px Manrope,sans-serif}
+.search{flex:1;min-width:150px}
+h2{font-size:clamp(22px,3.4vw,32px);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;padding:0;color:inherit;font:inherit;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(13,79,76,.16)}
+.pic{padding:18px 14px 6px;display:flex;align-items:flex-end}
+.pic svg{width:100%;height:auto}
+.info{padding:6px 18px 18px}
+.info h3{font-size:16px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 10px}
+.price{font-weight:800;font-size:19px;color:var(--teal)}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted);background:var(--surface);border-radius:20px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:64px 0}
+.why div{border-top:4px solid var(--sun);padding-top:14px}
+.why b{font-family:Unbounded,sans-serif;font-size:16px}
+.why p{color:var(--muted);margin:6px 0 0}
+footer{background:var(--teal);color:#fff;padding:36px 0 28px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{margin:4px 0;opacity:.9}
+dialog{border:0;border-radius:24px;padding:0;max-width:520px;width:calc(100% - 28px);background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(5,15,20,.6)}
+.dbody{padding:22px}
+.dpic{background:var(--bg);padding:18px;border-radius:16px}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin:16px 0;font-size:14px}
+.spec span{color:var(--muted)}
+.form{display:grid;gap:10px;margin-top:12px}
+.form input{border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px;font:600 15px Manrope,sans-serif}
+.close{float:right;background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer;line-height:1}
+.ok{color:var(--teal);font-weight:800;margin-top:10px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo"><i></i>Дала Авто</div><a class="tel" href="tel:+77270000000">+7 727 000 00 00</a></header>
+
+<section class="hero">
+<div>
+<h1>Өз бюджетіңе сай көлік тап</h1>
+<p>Тексерілген, құжаттары таза көліктер. Бағасы айдарда көрсетілген, жасырын төлем жоқ.</p>
+</div>
+<div class="budget">
+<label for="bud">Бюджетің</label>
+<div class="sum" id="sum"></div>
+<input type="range" id="bud" min="5000000" max="35000000" step="500000" value="35000000">
+<div class="res"><span id="cnt"></span><button class="btn" id="go">Көліктерді көру</button></div>
+</div>
+</section>
+
+<section id="list">
+<h2>Сатылымдағы көліктер</h2>
+<div class="tools">
+<button class="chip" data-b="all" aria-pressed="true">Барлығы</button>
+<button class="chip" data-b="Седан" aria-pressed="false">Седан</button>
+<button class="chip" data-b="Кроссовер" aria-pressed="false">Кроссовер</button>
+<input class="search" id="q" placeholder="Маркасын іздеу: Toyota, Kia…" aria-label="Іздеу">
+<select id="sort" aria-label="Сұрыптау"><option value="a">Арзаннан қымбатқа</option><option value="d">Қымбаттан арзанға</option><option value="y">Жаңадан ескіге</option></select>
+</div>
+<div class="grid" id="grid"></div>
+</section>
+
+<section class="why">
+<div><b>Тексеру</b><p>Әр көлік 120 тармақ бойынша диагностикадан өтеді.</p></div>
+<div><b>Кепілдік</b><p>Сатылған көлікке 6 ай техникалық кепілдік береміз.</p></div>
+<div><b>Рассрочка</b><p>Алғашқы жарнасыз, 36 айға дейін бөліп төлеңіз.</p></div>
+<div><b>Trade-in</b><p>Ескі көлігіңізді бағалап, жаңасына айырбастаймыз.</p></div>
+</section>
+</div>
+
+<footer><div class="wrap">
+<div><b>Дала Авто</b><p>Алматы қ., Райымбек даңғылы 100</p></div>
+<div><p>Күн сайын 09:00–20:00</p><p>+7 727 000 00 00</p></div>
+</div></footer>
+
+<dialog id="dlg"><div class="dbody" id="dbody"></div></dialog>
+
+<script>
+var CARS=[
+{n:"Toyota Camry",y:2022,p:16900000,t:"Седан",km:38000,f:"Бензин",c:"#1d3557"},
+{n:"Kia K5",y:2022,p:13900000,t:"Седан",km:41000,f:"Бензин",c:"#9b2226"},
+{n:"Hyundai Elantra",y:2022,p:9700000,t:"Седан",km:35000,f:"Бензин",c:"#6c757d"},
+{n:"Chevrolet Onix",y:2023,p:7400000,t:"Седан",km:12000,f:"Бензин",c:"#e5e5e5"},
+{n:"BMW 520i",y:2021,p:24300000,t:"Седан",km:56000,f:"Бензин",c:"#14213d"},
+{n:"Hyundai Tucson",y:2023,p:15800000,t:"Кроссовер",km:9000,f:"Бензин",c:"#2a9d8f"},
+{n:"Kia Sportage",y:2023,p:16400000,t:"Кроссовер",km:14000,f:"Бензин",c:"#c8553d"},
+{n:"Toyota RAV4",y:2021,p:15200000,t:"Кроссовер",km:62000,f:"Гибрид",c:"#3d405b"},
+{n:"Lexus RX",y:2020,p:27000000,t:"Кроссовер",km:71000,f:"Бензин",c:"#bfc0c0"},
+{n:"Toyota Prado",y:2021,p:32500000,t:"Кроссовер",km:48000,f:"Дизель",c:"#1b1b1e"}
+];
+var type="all",$=function(i){return document.getElementById(i)};
+function fmt(n){return n.toLocaleString("ru-RU").replace(/,/g," ")+" ₸"}
+function svg(c,t){
+var body=t==="Седан"?"M16 72 L26 56 Q36 51 68 49 L94 31 Q99 28 110 28 L160 28 Q170 29 178 41 L194 49 Q220 53 224 63 L224 72 Z":"M14 72 L20 52 Q28 46 58 44 L78 22 Q82 20 92 20 L186 20 Q194 21 198 33 L208 46 Q228 50 228 62 L228 72 Z";
+var win=t==="Седан"?"M100 33 L158 33 Q165 34 170 42 L84 46 Z":"M84 26 L184 26 Q189 27 192 36 L194 44 L70 44 Z";
+return '<svg viewBox="0 0 240 96" role="img" aria-hidden="true"><ellipse cx="120" cy="88" rx="104" ry="5" fill="rgba(0,0,0,.12)"/><path d="'+body+'" fill="'+c+'"/><path d="'+win+'" fill="rgba(255,255,255,.55)"/><rect x="14" y="66" width="212" height="6" rx="3" fill="rgba(0,0,0,.2)"/><g fill="#101820"><circle cx="62" cy="76" r="14"/><circle cx="182" cy="76" r="14"/></g><g fill="#cfd8dc"><circle cx="62" cy="76" r="6"/><circle cx="182" cy="76" r="6"/></g></svg>';
+}
+function list(){
+var max=+$("bud").value,q=$("q").value.toLowerCase().trim(),s=$("sort").value;
+var r=CARS.filter(function(c){return c.p<=max&&(type==="all"||c.t===type)&&c.n.toLowerCase().indexOf(q)>-1});
+r.sort(function(a,b){return s==="a"?a.p-b.p:s==="d"?b.p-a.p:b.y-a.y});
+$("grid").innerHTML=r.length?r.map(function(c){var i=CARS.indexOf(c);
+return '<button class="card" data-i="'+i+'"><div class="pic">'+svg(c.c,c.t)+'</div><div class="info"><h3>'+c.n+'</h3><div class="meta">'+c.y+' · '+c.km.toLocaleString("ru-RU")+' км · '+c.f+'</div><div class="price">'+fmt(c.p)+'</div></div></button>'}).join(""):'<div class="empty">Бұл бюджетке көлік табылмады. Бюджетті арттырып көріңіз.</div>';
+$("sum").textContent="дейін "+fmt(max);
+$("cnt").textContent=r.length+" көлік табылды";
+}
+$("bud").oninput=list;$("q").oninput=list;$("sort").onchange=list;
+$("go").onclick=function(){$("list").scrollIntoView({behavior:"smooth"})};
+document.querySelectorAll(".chip").forEach(function(b){b.onclick=function(){
+document.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed","false")});
+b.setAttribute("aria-pressed","true");type=b.dataset.b;list()}});
+$("grid").onclick=function(e){var el=e.target.closest(".card");if(!el)return;
+var c=CARS[+el.dataset.i];
+$("dbody").innerHTML='<button class="close" id="x" aria-label="Жабу">×</button><h2 style="font-size:22px">'+c.n+'</h2><div class="dpic">'+svg(c.c,c.t)+'</div><div class="spec"><div><span>Жылы</span><br><b>'+c.y+'</b></div><div><span>Жүрісі</span><br><b>'+c.km.toLocaleString("ru-RU")+' км</b></div><div><span>Отын</span><br><b>'+c.f+'</b></div><div><span>Кузов</span><br><b>'+c.t+'</b></div></div><div class="price" style="font-size:24px">'+fmt(c.p)+'</div><div class="form"><input id="nm" placeholder="Атың" autocomplete="name"><input id="ph" placeholder="Телефон нөмірің" type="tel" autocomplete="tel"><button class="btn" id="send">Қоңырау сұрау</button></div><div id="msg"></div>';
+$("dlg").showModal();
+$("x").onclick=function(){$("dlg").close()};
+$("send").onclick=function(){
+if(!$("nm").value.trim()||$("ph").value.replace(/\D/g,"").length<10){$("msg").innerHTML='<div class="ok" style="color:#c0392b">Атың мен телефон нөміріңді толық жаз.</div>';return}
+$("msg").innerHTML='<div class="ok">Рақмет, '+$("nm").value.replace(/[<>&]/g,"")+'! 15 минут ішінде хабарласамыз.</div>'};
+};
+$("dlg").onclick=function(e){if(e.target===$("dlg"))$("dlg").close()};
+list();
+</script>
+</body>
+</html>
